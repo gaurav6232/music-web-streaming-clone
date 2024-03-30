@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+#main{
+    width: 100%;
+    min-height: 100%;
+    background-color: red;
+    display: flex;
+    gap: 10px;
+    background-color: #000000;
+}
+
+.left{
+    height: 100%;
+    width: 20%;
+    background-color: #121212;
+
+}
+
+.left button,.left a{
+    font-size: 32px;
+    color: #fff;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    padding: 16px;
+    gap: 25px;
+    cursor: pointer;
+    align-items: center;
+    text-decoration: none;
+}
+
+.left button:hover, .left a:hover{
+    background-color: #333;
+}
+
+
+.left button p,.left a p{
+    font-size: 18px;
+}
+
+.right{
+    width: 80%;
+    min-height: 100vh;
+    background-color: #121212;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.right .musics{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
+}
+.song{
+    align-items: flex-start;
+    background-color: #3f3f3f;
+    width: fit-content;
+    height: fit-content;
+    padding: 9px;
+    border-radius: 7px;
+    margin: 10px;
+    position: relative;
+
+}
+
+.song .text h5,
+.song .text p{
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+.song img{
+    /* height: 150px; */
+    width: 100%;
+    object-fit: cover;
+}
+
+.song .playButton{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 80%;
+    top: 60%;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.song .playButton i{
+    color: green;
+}
+
+
+audio{
+    position: fixed;
+    bottom: 20px;
+    transform: translate(-50%,-50%);
+    left: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    #main {
+        flex-direction: column-reverse; /* Change flex-direction to column-reverse to stack left below right */
+    }
+
+    .left {
+        width: 100%; /* Set width to 100% to make it full width */
+        height: auto;
+        position: fixed;
+        top: 0;
+        left: 0; 
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;/* Set height to auto */
+    }
+
+    .right {
+        width: 100%; /* Set width to 100% to make it full width */
+        height: auto; /* Set height to auto */
+    }
+
+    .right .musics {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust grid columns */
+    }
+
+    .song .playButton {
+        left: 70%; /* Adjust position of play button */
+    }
+
+    audio {
+        position: fixed; /* Set position to static for audio element */
+        margin-top: 20px;
+        left: 50%; /* Add margin top for spacing */
+    }
+}
+
+ 

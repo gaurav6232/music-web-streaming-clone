@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title> 
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+ </head>
+ <body>
+    <div id="main">
+        <div class="left">
+            <button>
+                <i class="ri-home-4-fill"></i>
+                <p   >Home</p>
+            </button>
+
+            <button>
+                <a href="/search">
+                    <i class="ri-search-2-line"></i>
+                    <p>Search</p>
+                </a>
+            </button>
+
+            <button>
+                <a href="/uploadMusic">
+                    <i class="ri-upload-cloud-2-fill"></i>
+                    <p>upload</p>
+                </a>
+            </button>
+        </div>
+        <div class="right">
+            <div style="width: 100%; display: flex; justify-content: space-between; margin-top: 20px; position: relative;">
+                <div class="arrow" style="font-size: 2vw;"><  ></div>
+                <div class="leflogin" style="padding: 20px 30px;   background-color: rgb(54, 177, 140); border-radius: 10px;">
+                    <a href="/auth">sign in</a>
+                </div>
+            </div>
+            <div class="musics">
+                <% if (allSongs.length > 0) { %>
+                    <% allSongs.forEach(song => { %>
+                        <div class="song" onclick="songCardClicked('<%= song.filename %>')">
+                            <img src="/poster/<%= song.poster %>" alt="">
+                            <div class="text">
+                                <h5><%= song.title %></h5>
+                                <p><%= song.artist %></p>
+                                <p><%= song.album %></p>
+                                <!-- Additional song information -->
+                                <!-- Example: <p>Duration: <%= song.duration %></p> -->
+                            </div>
+                            <div class="playButton" onclick="playPauseSong('<%= song.filename %>')">
+                                <!-- Dynamic play button icon -->
+                                <i class="ri-play-circle-fill"></i>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No songs available.</p>
+                <% } %>
+            </div>
+            <audio id="audioPlayer" controls></audio>
+        </div>
+    </div>
+    
+    <script>
+        function songCardClicked(filename) {
+            document.getElementById('audioPlayer').setAttribute('src', `/stream/${filename}`);
+            document.getElementById('audioPlayer').play();
+        }
+    
+        function playPauseSong(filename) {
+            // Implement play/pause functionality for the specific song
+        }
+
+        
+    </script>
+    
+    
+</body>
+</html>
